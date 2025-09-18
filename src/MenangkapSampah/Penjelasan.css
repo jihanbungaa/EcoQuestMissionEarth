@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../../Asset/BackgroundMenangkapSampah.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+
+#penjelasan {
+    position: absolute;
+    top: 25%; /* Adjusted from 10% to move down */
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 28px 32px 18px 32px;
+    border-radius: 18px;
+    font-size: 1.15rem;
+    font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 0 24px rgba(0,0,0,0.18);
+    letter-spacing: 0.01em;
+    z-index: 2;
+}
+
+
+#penjelasan p {
+    margin: 0.6em 0 0.3em 0;
+    line-height: 1.4;
+    font-weight: 500;
+    font-size: 1.13rem;
+    transition: opacity 0.7s, transform 0.7s;
+}
+
+
+.button {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+#btn-selanjutnya {
+    right: 24px;
+    bottom: 24px;
+    width: 160px;
+    z-index: 3;
+}
+
+
+#volume-btn {
+    right: 24px;
+    top: 24px;
+    width: 70px;
+    z-index: 3;
+}
+
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+
+.button:active {
+    transform: scale(0.95);
+}
+
+
+h1 {
+    position: absolute;
+    top: 5%; /* Added position and moved to top */
+    left: 50%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(120deg, #3987db 0%, #8fd3f4 100%);
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    #penjelasan {
+        width: 90%;
+        padding: 1.5rem;
+        font-size: 1rem;
+        top: 30%; /* Adjust for mobile */
+    }
+    
+    #btn-selanjutnya {
+        width: 100px; /* Slightly smaller on mobile */
+        height: 70px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        top: 8%; /* Adjust for mobile */
+    }
+    #volume-btn {
+        width: 50px; /* Slightly smaller on mobile */
+        right: 10px;
+        top: 10px;
+    }
+
+/* Responsive */
+@media (max-width: 600px) {
+    #penjelasan {
+        padding: 14px 8px 10px 8px;
+        font-size: 1rem;
+    }
+    #btn-selanjutnya {
+        width: 110px;
+        right: 10px;
+        bottom: 10px;
+    }
+    #volume-btn {
+        width: 45px;
+        right: 10px;
+        top: 10px;
+    }
+}}
