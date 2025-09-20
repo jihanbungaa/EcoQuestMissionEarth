@@ -25,12 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sampahImages = [
         '../../Asset/sampah/tkj.png',
-        '../../Asset/sampah/kayu.png',
+        '../../Asset/sampah/cat.png',
         '../../Asset/sampah/processor.png',
         '../../Asset/sampah/ban.png',
         '../../Asset/sampah/batre.png',
         '../../Asset/sampah/baut.png',
-        '../../Asset/sampah/kabel.png'
+        '../../Asset/sampah/mesin.png',
+        '../../Asset/sampah/serpihan.png',
+        '../../Asset/sampah/cangkir.png'
     ];
 
     function createSampah() {
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let xPos = gameContainer.offsetWidth + 50;
-        const speed = 5;
+        const speed = 20;
         
         const moveInterval = setInterval(() => {
             xPos -= speed;
@@ -141,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(gameInterval);
         clearInterval(timerInterval);
         
-        gameInterval = setInterval(createSampah, 2000);
+        gameInterval = setInterval(createSampah, 600);
         
         timerInterval = setInterval(() => {
             if (isGameActive) {

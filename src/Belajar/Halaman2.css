@@ -24,8 +24,8 @@ body {
 
 .chalk-text {
   position: absolute;
-  top: 40%;  /* atur biar pas di papan */
-  left: 60%;
+  top: 36%;  /* atur biar pas di papan */
+  left: 57%;
   transform: translateX(-50%);
   width: 70%;
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -46,6 +46,17 @@ body {
     display: flex;
     gap: 20px;
     
+}
+
+.teknik {
+    width: 350px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: absolute;
+    bottom: 10%;
+    left: 85%;
+    transform: translateX(-50%);
 }
 
 .kapur {

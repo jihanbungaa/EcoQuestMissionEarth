@@ -200,70 +200,81 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
     });
 
-    function spawnTrash() {
-        if (!isGameRunning) return;
+    // ✅ Versi spawnTrash sudah diperbaiki
+    // ✅ Versi spawnTrash sudah diperbaiki
+function spawnTrash() {
+    if (!isGameRunning) return;
 
-        const trash = document.createElement('img');
+    const trash = document.createElement('img');
 
-        // daftar file sampah di folder Asset/sampah
-        const trashImages = [
-            '../../Asset/sampah/tkj.png',
-            '../../Asset/sampah/kayu.png',
-            '../../Asset/sampah/processor.png',
-            '../../Asset/sampah/ban.png',
-            '../../Asset/sampah/batre.png',
-            '../../Asset/sampah/baut.png',
-            '../../Asset/sampah/kabel.png'
-        ];
+    // daftar file sampah di folder Asset/sampah
+    const trashImages = [
+        '../../Asset/sampah/amplas.png',
+        '../../Asset/sampah/flashdisk.png',
+        '../../Asset/sampah/kayu.png',
+        '../../Asset/sampah/cpu.png',
+        '../../Asset/sampah/batako.png',
+        '../../Asset/sampah/sampahteknik.png',
+        '../../Asset/sampah/kaset.png',
+        '../../Asset/sampah/pc2.png',
+        '../../Asset/sampah/tang.png'
+    ];
 
-        const randomIndex = Math.floor(Math.random() * trashImages.length);
-        trash.src = trashImages[randomIndex];
-        trash.className = 'trash';
+    const randomIndex = Math.floor(Math.random() * trashImages.length);
+    trash.src = trashImages[randomIndex];
+    trash.className = 'trash';
 
-        const minX = 0;
-        const maxX = getGameWidth() - 50;
-        const randomX = Math.random() * (maxX - minX) + minX;
+    const minX = 0;
+    const maxX = getGameWidth() - 50;
+    const randomX = Math.random() * (maxX - minX) + minX;
 
-        trash.style.left = `${randomX}px`;
-        trash.style.top = '-50px';
-        trash.style.width = "80px";   // ukuran lebih besar
-        trash.style.height = "80px";  // ukuran lebih besar
-        trash.style.position = "absolute";
+    trash.style.left = `${randomX}px`;
+    trash.style.top = '-50px';
+    trash.style.width = "80px";   // ukuran lebih besar
+    trash.style.height = "80px";  // ukuran lebih besar
+    trash.style.position = "absolute";
 
-        gameArea.appendChild(trash);
+    gameArea.appendChild(trash);
 
-        let pos = -50;
-        const fall = setInterval(() => {
-            if (!isGameRunning) {
-                clearInterval(fall);
-                trash.remove();
-                return;
-            }
+    let pos = -50;
+    let caught = false; // ✅ flag untuk deteksi sudah ketangkap
 
-            pos += 8; // lebih cepat jatuh
-            trash.style.top = `${pos}px`;
+    const fall = setInterval(() => {
+        if (!isGameRunning) {
+            clearInterval(fall);
+            trash.remove();
+            return;
+        }
 
-            const trashRect = trash.getBoundingClientRect();
-            const binRect = trashBin.getBoundingClientRect();
-            const gameAreaRect = gameArea.getBoundingClientRect();
+        pos += 15; // lebih cepat jatuh
+        trash.style.top = `${pos}px`;
 
-            if (
-                trashRect.bottom >= binRect.top &&
-                trashRect.top <= binRect.bottom &&
-                trashRect.left < binRect.right &&
-                trashRect.right > binRect.left
-            ) {
-                score += 10;
-                updateUI();
-                trash.remove();
-                clearInterval(fall);
-            } else if (pos > gameAreaRect.height) {
-                decreaseLives();
-                trash.remove();
-                clearInterval(fall);
-            }
-        }, 50);
-    }
+        const trashRect = trash.getBoundingClientRect();
+        const binRect = trashBin.getBoundingClientRect();
+
+        // cek tabrakan dengan keranjang
+        if (
+            !caught &&
+            trashRect.bottom >= binRect.top &&
+            trashRect.top <= binRect.bottom &&
+            trashRect.left < binRect.right &&
+            trashRect.right > binRect.left
+        ) {
+            caught = true;
+            score += 10;
+            updateUI();
+            trash.remove();
+            clearInterval(fall);
+        } 
+        // cek jatuh sampai bawah (pakai tinggi gameArea, bukan rect layar)
+        else if (!caught && pos > gameArea.clientHeight - trash.offsetHeight) {
+            decreaseLives();
+            trash.remove();
+            clearInterval(fall);
+        }
+    }, 50);
+}
+
 
     // langsung mulai game tanpa popup nama
     initGame();
