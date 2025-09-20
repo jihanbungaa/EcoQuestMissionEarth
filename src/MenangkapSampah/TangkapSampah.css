@@ -258,3 +258,8 @@ body {
   background: #42a5f5;
   transform: scale(1.07);
 }
+
+.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
