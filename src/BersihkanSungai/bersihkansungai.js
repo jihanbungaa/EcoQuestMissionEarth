@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sampahImages = [
         '../../Asset/sampah/tkj.png',
         '../../Asset/sampah/kayu.png',
-        '../../Asset/sampah/pc3.png',
+        '../../Asset/sampah/processor.png',
         '../../Asset/sampah/ban.png',
         '../../Asset/sampah/batre.png',
         '../../Asset/sampah/baut.png',

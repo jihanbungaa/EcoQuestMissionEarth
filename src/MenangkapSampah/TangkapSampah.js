@@ -36,9 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
             updateUI();
             startTimer();
 
+            // spawn pertama langsung muncul
+            spawnTrash();
+
+            // spawn berikutnya lebih cepat
             spawnInterval = setInterval(() => {
                 if (isGameRunning) spawnTrash();
-            }, 1000);
+            }, 700);
 
             gameInitialized = true;
         }
@@ -119,9 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI();
         startTimer();
 
+        // spawn pertama langsung
+        spawnTrash();
+
+        // spawn lebih cepat
         spawnInterval = setInterval(() => {
             if (isGameRunning) spawnTrash();
-        }, 1000);
+        }, 700);
     }
 
     // Event listeners untuk popup
@@ -196,7 +204,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isGameRunning) return;
 
         const trash = document.createElement('img');
-        trash.src = `../../Asset/sampah${Math.floor(Math.random() * 4) + 1}.jpg`;
+
+        // daftar file sampah di folder Asset/sampah
+        const trashImages = [
+            '../../Asset/sampah/tkj.png',
+            '../../Asset/sampah/kayu.png',
+            '../../Asset/sampah/processor.png',
+            '../../Asset/sampah/ban.png',
+            '../../Asset/sampah/batre.png',
+            '../../Asset/sampah/baut.png',
+            '../../Asset/sampah/kabel.png'
+        ];
+
+        const randomIndex = Math.floor(Math.random() * trashImages.length);
+        trash.src = trashImages[randomIndex];
         trash.className = 'trash';
 
         const minX = 0;
@@ -205,6 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         trash.style.left = `${randomX}px`;
         trash.style.top = '-50px';
+        trash.style.width = "80px";   // ukuran lebih besar
+        trash.style.height = "80px";  // ukuran lebih besar
+        trash.style.position = "absolute";
+
         gameArea.appendChild(trash);
 
         let pos = -50;
@@ -215,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            pos += 5;
+            pos += 8; // lebih cepat jatuh
             trash.style.top = `${pos}px`;
 
             const trashRect = trash.getBoundingClientRect();
