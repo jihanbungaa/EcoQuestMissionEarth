@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isGameRunning) return;
 
         const trash = document.createElement('img');
-        trash.src = `../../Asset/Sampah${Math.floor(Math.random() * 4) + 1}.jpg`;
+        trash.src = `../../Asset/sampah${Math.floor(Math.random() * 4) + 1}.jpg`;
         trash.className = 'trash';
 
         const minX = 0;

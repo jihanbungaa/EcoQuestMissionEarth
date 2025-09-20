@@ -24,10 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerName = localStorage.getItem('playerName') || "Guest";
 
     const sampahImages = [
-        '../../Asset/Sampah1.jpg',
-        '../../Asset/Sampah2.jpg',
-        '../../Asset/Sampah3.jpg',
-        '../../Asset/Sampah4.jpg'
+        '../../Asset/sampah/tkj.png',
+        '../../Asset/sampah/kayu.png',
+        '../../Asset/sampah/pc3.png',
+        '../../Asset/sampah/ban.png',
+        '../../Asset/sampah/batre.png',
+        '../../Asset/sampah/baut.png',
+        '../../Asset/sampah/kabel.png'
     ];
 
     function createSampah() {
@@ -45,10 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         sampah.style.right = '-50px';
         sampah.style.left = 'auto';
         
-        gameContainer.appendChild(sampah);
+        gameContainer.appendChild(sampah);  
 
         sampah.addEventListener('click', () => {
-            score += 10;
+            score += 1;
             scoreElement.textContent = `Score: ${score}`;
             gameContainer.removeChild(sampah);
         });

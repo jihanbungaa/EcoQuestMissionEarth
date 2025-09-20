@@ -11,7 +11,6 @@ html, body {
 }
 
 body {
-    background-image: url("../../Asset/InformasiSampahB3.jpg");
     background-size: cover;
     background-position: center 5%;
     background-repeat: no-repeat;
@@ -22,25 +21,37 @@ body {
     justify-content: center;
 }
 
+.chalk-text {
+  position: absolute;
+  top: 40%;  /* atur biar pas di papan */
+  left: 60%;
+  transform: translateX(-50%);
+  width: 70%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 28px;
+  color: white;
+  text-shadow: 1px 1px 2px #333, 0 0 5px #fff;
+  white-space: pre-wrap;
+}
 
-
-.Catatan-B3 {
-    width: 60%;
-    color: black;
-    padding: 25px;
-    border-radius: 15px;
-    font-size: 22px;
-    text-align: justify;
-    font-family: Arial, sans-serif;
+.kapur {
+    width: 70px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s;
     position: absolute;
-    top: 32%;
-    left: 3%;
+    top: 30%;
+    left: 25%;
+  transform-origin: center;
+  animation: chalkMove 0.2s infinite alternate;
 }
 
-.Catatan-B3 span{
-    color: red;
-    font-weight: bold;
+/* Animasi goyang kecil biar kayak beneran nulis */
+@keyframes chalkMove {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
 }
+
 
 .selanjutnya{
     width: 60px;
@@ -72,8 +83,8 @@ body {
     cursor: pointer;
     transition: transform 0.2s;
     position: absolute;
-    top: 88%;
-    left: 10%;
+    bottom: 10%;
+    left: 25%;
     display: flex;
     gap: 20px;   
 }
